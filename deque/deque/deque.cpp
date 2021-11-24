@@ -2,10 +2,11 @@
 #include <iterator>
 #include <list>
 using namespace std;
+template <typename T>
 class Deque {
     // construct an empty deque
     struct Node {
-        int data;
+        T data;
         Node* next = nullptr;
         Node* prev = nullptr;
     };
@@ -34,20 +35,20 @@ public:
         };
         return count;
     }
-    int getFront() const {
+    T getFront() const {
         if (isEmpty()) {
             return -1;
         }
         return _head->data;
     }
-    int getRear() const {
+    T getRear() const {
         if (isEmpty()) {
             return -1;
         }
         return _tail->data;
     }
     // add the item to the front
-    void addFirst(int n) {
+    void addFirst(T n) {
         Node* newFirst = new Node();
         newFirst->data = n;
         if (isEmpty()) {
@@ -61,7 +62,7 @@ public:
     }
 
     // add the item to the back
-    void addLast(int n) {
+    void addLast(T n) {
         Node* newLast = new Node();
         newLast->data = n;
         if (isEmpty()) {
@@ -90,16 +91,15 @@ public:
     }
 
     // return an iterator over items in order from front to back
-    /*Iterator<int> iterator() {
+    /*Iterator<T> iterator() {
 
     }*/
 private:
     Node* _head;
     Node* _tail;
 };
-int main()
-{
-    Deque* test = new Deque;
+void test1() {
+    Deque<int>* test = new Deque<int>;
     test->addLast(5);
     test->addLast(10);
     cout << test->getRear() << endl;
@@ -110,6 +110,24 @@ int main()
     cout << test->size() << endl;
     test->removeFirst();
     cout << test->getFront() << endl;
-    cout << test->size() << endl; 
+    cout << test->size() << endl;
+}
+void test2() {
+    Deque<char>* test = new Deque<char>;
+    test->addLast('a');
+    test->addLast('b');
+    cout << test->getRear() << endl;
+    test->removeLast();
+    cout << test->getRear() << endl;
+    test->addFirst('c');
+    cout << test->getFront() << endl;
+    cout << test->size() << endl;
+    test->removeFirst();
+    cout << test->getFront() << endl;
+    cout << test->size() << endl;
+}
+void main()
+{
+    test2();
 }
 
