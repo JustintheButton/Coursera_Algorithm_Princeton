@@ -110,6 +110,6 @@ int main()
     cout << test->size() << endl;
     test->removeFirst();
     cout << test->getFront() << endl;
-    cout << test->size() << endl;
+    cout << test->size() << endl; 
 }
 
